@@ -1,0 +1,80 @@
+#style1{
+		width: 250px;
+		height: 180px;
+		background-color: #ffa60a;
+		position: absolute;
+		margin-left: 540px;
+		margin-top: 100px;
+	}
+#instyle1{
+	position: absolute;
+	margin-left: 38px;
+	margin-top: 23px;
+}
+#registration{
+	width: 122px;
+}
+#submit{
+	width: 173px;
+}
+#style2{
+		width: 250px;
+		height: 150px;
+		background-color: #ffa60a;
+		position: absolute;
+		margin-left: 540px;
+		margin-top: 100px;
+	}
+#instyle2{
+	position: absolute;
+	margin-left: 38px;
+	margin-top: 23px;
+}
+#style3{
+	background-color: #ffa60a;
+	width: 820px;
+	height: 30px;
+	margin-left: 250px;
+}
+#buttons{
+	margin-left: 280px;
+	margin-top: 23px;
+}
+#style4{
+	margin-left:250px; 
+	margin-top:5px;
+}
+#style5{
+	margin-left:250px; 
+	margin-top:5px;
+}
+#style6{
+	margin-left:250px; 
+	margin-top:5px;
+}
+#style4 button{
+	margin-right:20px; 
+	margin-top:5px;
+}
+#outdiv2{
+	display:none;
+}
+#buttons1{
+	display:none;
+}
+#allU1{
+	display:none;
+}
+#allMap{
+	display:none;
+}
+#map{
+	 width:820px;
+	 height:450px;
+}
+#friends{
+	display:none;
+}
+#div3{
+	display:none;
+}
