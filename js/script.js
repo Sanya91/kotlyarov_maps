@@ -71,6 +71,8 @@
         hash();
         enterClick();
         regClick();
+        enter1Click();
+        reg1Click();
         submit1Click();
         submit2Click();
         exitClick();
@@ -212,6 +214,18 @@
                     window.location.hash = '#registration';
                 });
             }
+            //клик по кнопке enter, при клике меняется хэш
+            function enter1Click(){
+                $('#div2 #enter').click(function() {
+                    location.reload();
+                });
+            }
+            //клик по кнопке registration
+            function reg1Click(){
+                $('#div1 #registration').click(function() {
+                    location.reload();
+                });
+            }
             //клик по кнопке #div1 #submit запись данных нового пользователя в localStorage
             function submit1Click(){
                 $('#div1 #submit').click(function() {
@@ -220,28 +234,32 @@
                     var pass = $('#div1 #password').val();
                     var conf_pass= $('#div1 #conf_pass').val();
                     if(name !== '' && email !== '' && pass !== '' && conf_pass !== ''){
-                        for (var i = 0; i < localStorage.length; i++) {
-                            object = localStorage.getItem('user_' + i);
-                            if (object !== null) {
-                                userR = JSON.parse(object);
-                                if(email == userR.email){
-                                    tmp = 0;
+                        if(pass == conf_pass){
+                            for (var i = 0; i < localStorage.length; i++) {
+                                object = localStorage.getItem('user_' + i);
+                                if (object !== null) {
+                                    userR = JSON.parse(object);
+                                    if(email == userR.email){
+                                        tmp = 0;
+                                    }
                                 }
-                            }
-                        } 
-                        if(tmp == 1){
-                            user0.id = localStorage.length;
-                            user0.name = name;
-                            user0.email = email;
-                            user0.pass = pass;
-                            firstLocalSet();
-                            window.location.hash = '#user=' + usId;
-                            location.reload();
+                            } 
+                            if(tmp == 1){
+                                user0.id = localStorage.length;
+                                user0.name = name;
+                                user0.email = email;
+                                user0.pass = pass;
+                                firstLocalSet();
+                                window.location.hash = '#user=' + usId;
+                                location.reload();
+                            }else{
+                                alert('Account already exists.');
+                                location.reload();
+                                tmp = 1;
+                            } 
                         }else{
-                            alert('Account already exists.');
-                            location.reload();
-                            tmp = 1;
-                        }       
+                            alert('Passwords do not match!');
+                        }      
                     }else{
                         alert('Please complete all fields.');
                     }
