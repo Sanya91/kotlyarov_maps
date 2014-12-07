@@ -287,8 +287,7 @@
                             } 
                         }
                     }else{
-                        swal("Please complete all fields.");
-                        // alert('Please complete all fields.');
+                        alert('Please complete all fields.');
                     }
                 });
             }
