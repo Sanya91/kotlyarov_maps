@@ -4,7 +4,8 @@
     var userR;
     var user;
     var tmp = 1;
-//    var userr = 'user_' + usId;
+    var tmpp = 0;
+    var infoWindow1;
     var user0 = {
         id: usId,
         key: 'true',
@@ -134,7 +135,11 @@
                         position: markerLatLng
                     });
                     //клик по маркеру, создание инфовиндоу, запись описания в массив юзера
-                    google.maps.event.addListener(marker,'click', function(event){
+                     google.maps.event.addListener(marker,'click', function(event){
+                        if(tmpp == 1){
+                            infoWindow1.close();
+                            tmpp = 0;
+                        }
                         for (var i = 0; i < localStorage.length; i++) {
                             if(window.location.hash == '#user=' + i){
                                 usId = i;
@@ -145,21 +150,32 @@
                                     if(userR.key == 'true'){
                                         lat = event.latLng.lat();
                                         lng = event.latLng.lng();
+                                        $('#title').attr('value','');
+                                        $('#information').attr('value','');
+                                        for (var k = 0; k <= user.markers.coords.lat.length; k++) {
+                                            if(user.markers.coords.lat[k] == lat){
+                                                if(user.markers.title[k] !== '' || user.markers.title[k] !== null || user.markers.title[k] !== undefined){
+                                                    $('#title').attr('value', user.markers.title[k]);
+                                                    $('#information').attr('value', user.markers.description[k]);
+                                                }
+                                            }
+                                        }
                                         var point = new google.maps.LatLng(lat+0.00690,lng);
                                         var label1 = '<div id="new_window">' + $('#div3').html() + '</div>'; 
-                                        var infoWindow1 = new google.maps.InfoWindow({
+                                        infoWindow1 = new google.maps.InfoWindow({
                                             content: label1,
                                             position: point 
                                         });
 
                                         infoWindow1.open(map); 
+                                        tmpp = 1;
                                         markerClick(infoWindow1,lat);
                                     }
                                 }
                             } 
                         };
-                    }); 
-                    //при наведении на маркер вытаскивает данные с юхера, рисует по ним всплывающие окна.
+                    });  
+                    //при наведении на маркер вытаскивает данные с юзера, рисует по ним всплывающие окна.
                     google.maps.event.addListener(marker,'mouseover', function(event){
                         var curentLat = event.latLng.lat();
                         var curentLng = event.latLng.lng();
